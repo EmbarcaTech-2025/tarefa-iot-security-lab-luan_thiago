@@ -10,24 +10,27 @@ int main() {
     // Inicializa todas as interfaces de I/O padrão (USB serial, etc.)
     stdio_init_all();
     
-    // Conecta à rede WiFi
+    // Conecta à rede WiFi - Etapa 1
     // Parâmetros: Nome da rede (SSID) e senha
-    connect_to_wifi("SSID da rede", "Senha da rede");
+    connect_to_wifi("Nome da Rede", "Senha da Rede");
+    // Testei a conectividade com o Wi-fi usando o nome e senha da rede privada da minha residência e deu certo
 
-    // Configura o cliente MQTT
+    // Configura o cliente MQTT - Etapa 2 
     // Parâmetros: ID do cliente, IP do broker, usuário, senha
-    mqtt_setup("bitdog1", "IP do broker", "aluno", "senha123");
+    mqtt_setup("bitdog1", "192.168.15.14", "aluno", "senha123");
 
     // Mensagem original a ser enviada
     const char *mensagem = "26.5";
+
     // Buffer para mensagem criptografada (16 bytes)
-    uint8_t criptografada[16];
+    //uint8_t criptografada[16];
+
     // Criptografa a mensagem usando XOR com chave 42
-    xor_encrypt((uint8_t *)mensagem, criptografada, strlen(mensagem), 42);
+    //xor_encrypt((uint8_t *)mensagem, criptografada, strlen(mensagem), 42);
 
     // Loop principal do programa
     while (true) {
-        // Publica a mensagem original (não criptografada)
+        // Publica a mensagem original (não criptografada) - Etapa 3
         mqtt_comm_publish("escola/sala1/temperatura", mensagem, strlen(mensagem));
         
         // Alternativa: Publica a mensagem criptografada (atualmente comentada)
