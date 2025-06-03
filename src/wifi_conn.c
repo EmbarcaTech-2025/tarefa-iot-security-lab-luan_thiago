@@ -16,6 +16,9 @@ void connect_to_wifi(const char *ssid, const char *password) {
     // Habilita o modo estação (STA) para se conectar a um ponto de acesso.
     cyw43_arch_enable_sta_mode();
 
+    sleep_ms(3000); // Aguarda um tempo de 3 segundos antes de tentar se conectar com a rede pelo nome e senha que foram passados
+    // Esse tempo é necessário para se conseguir vizualizar, em um terminal serial, os prints das mensagens
+
     // Tenta conectar à rede Wi-Fi com um tempo limite de 30 segundos (30000 ms).
     // Utiliza autenticação WPA2 com criptografia AES.
     if (cyw43_arch_wifi_connect_timeout_ms(ssid, password, CYW43_AUTH_WPA2_AES_PSK, 30000)) {
