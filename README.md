@@ -26,24 +26,12 @@ Este projeto demonstra uma comunicação segura entre dispositivos IoT utilizand
 
 ---
 
-### Estrutura do Projeto
-
-📁 projeto/
-├── wifi_conn.c // Conexão Wi-Fi com SSID e senha
-├── mqtt_comm.c // Setup MQTT, publish e callback
-├── xor_encrypt.c // Função XOR para criptografia leve
-├── subscriber.c // Lógica para subscriber com proteção contra replay
-├── mosquitto.conf // Configuração do broker MQTT
-└── README.md // Este documento
-
-
----
-
 ### Testes Realizados
 
 #### Conexão e MQTT
 - BitDogLab se conectou com sucesso à rede Wi-Fi local.
 - Publicação em tópico `escola/sala1/temperatura` usando `mqtt_publish`.
+- Comunicação entre duas placas, sendo uma publisher e outra subscriber utilizando o computador como broker.
 
 #### Segurança
 - Broker configurado com autenticação via `mosquitto_passwd`.
