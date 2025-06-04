@@ -9,11 +9,6 @@
 static mqtt_client_t *client;
 static uint32_t ultima_timestamp_recebida = 0;
 
-// Função auxiliar para extrair valor e timestamp da mensagem JSON
-static int parse_message(const char *msg, float *valor, uint32_t *timestamp) {
-    return sscanf(msg, "{\"valor\":%f,\"ts\":%lu}", valor, timestamp);
-}
-
 // Callbacks
 static void mqtt_incoming_publish_cb(void *arg, const char *topic, u32_t tot_len) {
     printf("Mensagem recebida no tópico: %s (tamanho total: %u)\n", topic, tot_len);
